@@ -6,4 +6,4 @@ model {
     User user
 }
 
-json tmpl.account(user: user)
+json tmpl.user(user: user)
