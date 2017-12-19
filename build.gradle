@@ -92,8 +92,6 @@ assets {
     minifyCss = true
 }
 
-
-
 //heroku deploy
 task stage() {
     dependsOn clean, war
