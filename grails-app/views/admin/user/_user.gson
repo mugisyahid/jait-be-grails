@@ -1,0 +1,9 @@
+import com.jait.User
+
+inherits template: '/hal'
+
+model {
+    User user
+}
+
+json g.render(user, [includes: ['username', 'name']])

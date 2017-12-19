@@ -1,0 +1,7 @@
+import com.jait.User
+
+model{
+    List<User> userList = []
+}
+
+json tmpl.user(userList ?: [])

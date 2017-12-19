@@ -1,0 +1,18 @@
+[
+  {
+    "authority": "ROLE_SYSTEM",
+    "description": "System wide admin"
+  },
+  {
+    "authority": "ROLE_ADMIN",
+    "description": "Administrator of an account"
+  },
+  {
+    "authority": "ROLE_KONVEKSI",
+    "description": "Konveksi Role"
+  },
+  {
+    "authority": "ROLE_CUSTOMER",
+    "description": "Customer Role"
+  }
+]

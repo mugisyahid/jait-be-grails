@@ -1,0 +1,46 @@
+[
+  {
+    "username": "sysadmin@kopong.com",
+    "name": "System Administrator",
+    "password": "",
+    "enabled": false,
+    "accountExpired": false,
+    "accountLocked": false,
+    "passwordExpired": false,
+    "remark": "keterangan",
+    "roles": [ "ROLE_SYSTEM" ]
+  },
+  {
+    "username": "admin@kopong.com",
+    "name": "Administrator",
+    "password": "",
+    "enabled": false,
+    "accountExpired": false,
+    "accountLocked": false,
+    "passwordExpired": false,
+    "remark": "keterangan jati diri1",
+    "roles": [ "ROLE_ADMIN" ]
+  },
+  {
+    "username": "konveksi@kopong.com",
+    "name": "konveksi",
+    "password": "",
+    "enabled": false,
+    "accountExpired": false,
+    "accountLocked": false,
+    "passwordExpired": false,
+    "remark": "keterangan jati diri - orang ganteng",
+    "roles": [ "ROLE_KONVEKSI" ]
+  },
+  {
+  "username": "customer@kopong.com",
+  "name": "customer",
+  "password": "",
+  "enabled": false,
+  "accountExpired": false,
+  "accountLocked": false,
+  "passwordExpired": false,
+  "remark": "keterangan jati diri - huehue",
+  "roles": [ "ROLE_CUSTOMER" ]
+  }
+]

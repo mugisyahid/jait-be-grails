@@ -1,0 +1,9 @@
+package admin.user
+
+import com.jait.User
+
+model {
+    User user
+}
+
+json tmpl.account(user: user)

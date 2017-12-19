@@ -1,0 +1,9 @@
+response.contentType 'application/hal+json'
+
+model {
+    Object object
+}
+
+json {
+    hal.links(object)
+}
