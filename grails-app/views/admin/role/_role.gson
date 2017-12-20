@@ -1,0 +1,9 @@
+import com.jait.Role
+
+inherits template: '/hal'
+
+model {
+    Role role
+}
+
+json g.render(role, [includes: ['authority', 'description']])

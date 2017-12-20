@@ -1,7 +1,7 @@
 import com.jait.User
 
 model{
-    List<User> userList = []
+    List<User> users = []
 }
 
-json tmpl.user(userList ?: [])
+json tmpl.user(users ?: [])

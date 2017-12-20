@@ -17,12 +17,11 @@ class UrlMappings {
         "500"(view: '/error')
         "404"(view: '/notFound')
 
-        /* security plugin */
-        "/login/$action?"(controller: "login")
-        "/logout/$action?"(controller: "logout")
+        '/register'(controller: 'user', action: 'register', namespace: 'admin', method: "POST")
 
        group('/admin'){
            '/user'(resources: 'user', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+           '/role'(resources: 'role', namespace: 'admin', includes: [ACTION_INDEX])
        }
     }
 }

@@ -1,0 +1,7 @@
+import com.jait.Role
+
+model{
+    List<Role> roles = []
+}
+
+json tmpl.role(roles ?: [])

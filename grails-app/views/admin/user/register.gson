@@ -1,0 +1,9 @@
+import com.jait.User
+import org.springframework.validation.Errors
+
+model {
+    User user
+}
+
+json tmpl.user(user: user)
+

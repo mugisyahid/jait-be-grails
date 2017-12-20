@@ -1,5 +1,7 @@
 package com.jait
 
+import com.jait.service.BootStrapService
+
 class BootStrap {
 
     BootStrapService bootStrapService

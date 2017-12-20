@@ -2,15 +2,22 @@ package com.jait.admin
 
 import com.jait.CommonController
 import com.jait.User
+import com.jait.command.admin.RegisterCommand
 import grails.compiler.GrailsCompileStatic
+import grails.converters.JSON
+import org.springframework.http.HttpMethod
 
 @GrailsCompileStatic
 class UserController extends CommonController {
 
     static namespace = 'admin'
 
+    static allowedMethods = [register: HttpMethod.POST.name()]
+
+    UserService userService
+
     def index() {
-        respond(userList: User.findAll())
+        respond(users: User.findAll())
     }
 
     def show(long id) {
@@ -24,5 +31,14 @@ class UserController extends CommonController {
     def save(User user) {
         user.validate()
         user.save()
+    }
+
+
+    def register(RegisterCommand cmd){
+        if (!cmd.validate()) {
+            return render (cmd.errors as JSON)
+        }
+        User user = userService.register(cmd)
+        user.hasErrors() ? render (user.errors as JSON) : render(view: 'register', model: [user: user])
     }
 }

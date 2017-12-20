@@ -1,6 +1,8 @@
-package com.jait
+package com.jait.service
 
 import com.jait.Role
+import com.jait.User
+import com.jait.UserRole
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 import groovy.json.JsonSlurper
