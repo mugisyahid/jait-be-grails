@@ -10,9 +10,8 @@ grails.plugin.springsecurity.rest.login.failureStatusCode = 401
 grails.plugin.springsecurity.rest.login.useJsonCredentials = true
 
 grails.plugin.springsecurity.rest.token.generation.jwt.algorithm = 'HS512'
-grails.plugin.springsecurity.rest.token.validation.headerName = 'Auth-Token'
-grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
 grails.plugin.springsecurity.rest.token.validation.useBearerToken = true
+grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
 grails.plugin.springsecurity.rest.token.storage.jwt.useSignedJwt = true
 
 
@@ -34,21 +33,15 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	[pattern: '/**/js/**',       access: ['permitAll']],
 	[pattern: '/**/css/**',      access: ['permitAll']],
 	[pattern: '/**/images/**',   access: ['permitAll']],
-	[pattern: '/**/favicon.ico', access: ['permitAll']]
+	[pattern: '/**/favicon.ico', access: ['permitAll']],
+
+	[pattern: '/login', 	access: ['permitAll']],
+	[pattern: '/logout',	access: ['isFullyAuthenticated()']],
+	[pattern: '/admin/**',	access: ['isFullyAuthenticated()']],
+
+	[pattern: '/register', 	access: ['permitAll']],
 ]
 
-//grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-//	[pattern: '/',               access: ['permitAll']],
-//	[pattern: '/error',          access: ['permitAll']],
-//	[pattern: '/index',          access: ['permitAll']],
-//	[pattern: '/index.gsp',      access: ['permitAll']],
-//	[pattern: '/shutdown',       access: ['permitAll']],
-//	[pattern: '/assets/**',      access: ['permitAll']],
-//	[pattern: '/**/js/**',       access: ['permitAll']],
-//	[pattern: '/**/css/**',      access: ['permitAll']],
-//	[pattern: '/**/images/**',   access: ['permitAll']],
-//	[pattern: '/**/favicon.ico', access: ['permitAll']]
-//]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: anonymousFilter],
@@ -56,7 +49,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: anonymousFilter],
 	[pattern: '/**/images/**',   filters: anonymousFilter],
 	[pattern: '/**/favicon.ico', filters: anonymousFilter],
-	[pattern: '/admin/**', filters: tokenFilter],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 

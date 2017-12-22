@@ -2,8 +2,8 @@
   {
     "username": "sysadmin@kopong.com",
     "name": "System Administrator",
-    "password": "",
-    "enabled": false,
+    "password": "abc",
+    "enabled": true,
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
@@ -13,8 +13,8 @@
   {
     "username": "admin@kopong.com",
     "name": "Administrator",
-    "password": "",
-    "enabled": false,
+    "password": "abc",
+    "enabled": true,
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
@@ -24,8 +24,8 @@
   {
     "username": "konveksi@kopong.com",
     "name": "konveksi",
-    "password": "",
-    "enabled": false,
+    "password": "abc",
+    "enabled": true,
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
@@ -35,8 +35,8 @@
   {
   "username": "customer@kopong.com",
   "name": "customer",
-  "password": "",
-  "enabled": false,
+  "password": "abc",
+  "enabled": true,
   "accountExpired": false,
   "accountLocked": false,
   "passwordExpired": false,

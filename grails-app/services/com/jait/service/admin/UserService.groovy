@@ -1,4 +1,4 @@
-package com.jait.admin
+package com.jait.service.admin
 
 import com.jait.Role
 import com.jait.User
@@ -17,8 +17,9 @@ class UserService {
     User register(RegisterCommand cmd) {
         User user = new User(name: cmd.name, username: cmd.username, password: cmd.password, remark: cmd.remark)
         //setPassword(user, cmd.password)
-        //setRole(user, cmd.roles)
-        user.save() ?: user
+        user.save()
+        setRole(user, cmd.roles)
+        user
     }
 
     void setPassword(User user, String password) {
@@ -28,8 +29,7 @@ class UserService {
     void setRole(User user, List<String> roles){
         roles.each {
             Role role = Role.findByAuthority(it)
-            UserRole userRole = new UserRole(user: user, role: role)
-            userRole.save() ?: log.warn(userRole.errors as String)
+            UserRole.create(user, role)
         }
     }
 }

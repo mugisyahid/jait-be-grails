@@ -3,6 +3,7 @@ package com.jait.admin
 import com.jait.CommonController
 import com.jait.User
 import com.jait.command.admin.RegisterCommand
+import com.jait.service.admin.UserService
 import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import org.springframework.http.HttpMethod
