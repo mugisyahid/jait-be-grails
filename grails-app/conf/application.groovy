@@ -5,7 +5,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.jait.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.jait.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.jait.Role'
 
-grails.plugin.springsecurity.rest.login.endpointUrl = '/login'
+//grails.plugin.springsecurity.rest.login.endpointUrl = '/login'
 grails.plugin.springsecurity.rest.login.failureStatusCode = 401
 grails.plugin.springsecurity.rest.login.useJsonCredentials = true
 
@@ -15,15 +15,15 @@ grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
 grails.plugin.springsecurity.rest.token.storage.jwt.useSignedJwt = true
 
 //logout
-grails.plugin.springsecurity.rest.logout
-
+grails.plugin.springsecurity.rest.logout.endpointUrl = '/api/logout'
 
 final String anonymousFilter = 'anonymousAuthenticationFilter,restTokenValidationFilter,' +
 		'restExceptionTranslationFilter,filterInvocationInterceptor'
 
-final String tokenFilter = 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,' +
-		'-authenticationProcessingFilter,-securityContextPersistenceFilter,' +
-		'-rememberMeAuthenticationFilter'
+final String traditionalFilter = 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'
+
+final String statelessFilter = 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
+
 
 grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
 grails.plugin.springsecurity.interceptUrlMap = [
@@ -38,11 +38,16 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	[pattern: '/**/images/**',   access: ['permitAll']],
 	[pattern: '/**/favicon.ico', access: ['permitAll']],
 
-	[pattern: '/login', 	access: ['permitAll']],
-	[pattern: '/logout',	access: ['isFullyAuthenticated()']],
-	[pattern: '/register', 	access: ['permitAll']],
+	[pattern: '/login/**',              access: ['permitAll']],
+	[pattern: '/api/login',             access: ['ROLE_ANONYMOUS']],
+	[pattern: '/logout/**',             access: ['isFullyAuthenticated()']],
+	[pattern: '/api/logout',            access: ['isFullyAuthenticated()']],
+	[pattern: '/oauth/access_token',    access: ['ROLE_ANONYMOUS']],
 
-	[pattern: '/admin/**',	access: ['ROLE_SYSTEM, ROLE_ADMIN']],
+	[pattern: '/register', 				access: ['permitAll']],
+	[pattern: '/admin/**',              access: ['isFullyAuthenticated()']],
+
+
 ]
 
 
@@ -52,6 +57,9 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: anonymousFilter],
 	[pattern: '/**/images/**',   filters: anonymousFilter],
 	[pattern: '/**/favicon.ico', filters: anonymousFilter],
-	[pattern: '/**',             filters: 'JOINED_FILTERS']
+
+	[pattern: '/admin/**', 			filters: statelessFilter],
+
+	[pattern: '/**',             	filters: traditionalFilter]
 ]
 

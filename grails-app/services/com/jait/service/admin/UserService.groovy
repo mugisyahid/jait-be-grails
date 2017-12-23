@@ -16,14 +16,9 @@ class UserService {
 
     User register(RegisterCommand cmd) {
         User user = new User(name: cmd.name, username: cmd.username, password: cmd.password, remark: cmd.remark)
-        //setPassword(user, cmd.password)
         user.save()
         setRole(user, cmd.roles)
         user
-    }
-
-    void setPassword(User user, String password) {
-        user.password = springSecurityService.encodePassword(password)
     }
 
     void setRole(User user, List<String> roles){
