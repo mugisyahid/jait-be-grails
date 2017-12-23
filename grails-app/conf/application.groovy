@@ -14,6 +14,9 @@ grails.plugin.springsecurity.rest.token.validation.useBearerToken = true
 grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
 grails.plugin.springsecurity.rest.token.storage.jwt.useSignedJwt = true
 
+//logout
+grails.plugin.springsecurity.rest.logout
+
 
 final String anonymousFilter = 'anonymousAuthenticationFilter,restTokenValidationFilter,' +
 		'restExceptionTranslationFilter,filterInvocationInterceptor'
@@ -37,9 +40,9 @@ grails.plugin.springsecurity.interceptUrlMap = [
 
 	[pattern: '/login', 	access: ['permitAll']],
 	[pattern: '/logout',	access: ['isFullyAuthenticated()']],
-	[pattern: '/admin/**',	access: ['isFullyAuthenticated()']],
-
 	[pattern: '/register', 	access: ['permitAll']],
+
+	[pattern: '/admin/**',	access: ['ROLE_SYSTEM, ROLE_ADMIN']],
 ]
 
 
