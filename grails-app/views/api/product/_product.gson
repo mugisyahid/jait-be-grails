@@ -1,0 +1,9 @@
+import com.jait.Product
+
+inherits template: '/hal'
+
+model {
+    Product product
+}
+
+json g.render(product, [deep:true, includes: ['name', 'price', 'description', 'user']])

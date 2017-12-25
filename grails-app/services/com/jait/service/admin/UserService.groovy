@@ -16,9 +16,7 @@ class UserService {
 
     User register(RegisterCommand cmd) {
         User user = new User(name: cmd.name, username: cmd.username, password: cmd.password, remark: cmd.remark)
-        user.save()
-        setRole(user, cmd.roles)
-        user
+        user.save() ?: user
     }
 
     void setRole(User user, List<String> roles){

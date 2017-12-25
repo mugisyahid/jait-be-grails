@@ -1,0 +1,9 @@
+package api.product
+
+import com.jait.Product
+
+model{
+    List<Product> products = []
+}
+
+json tmpl.product(products ?: [])

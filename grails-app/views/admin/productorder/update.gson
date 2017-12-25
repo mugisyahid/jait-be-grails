@@ -1,0 +1,9 @@
+package admin.productorder
+
+import com.jait.Product
+
+model {
+    ProductOrder productOrder
+}
+
+json tmpl.productOrder(productOrder: productOrder)

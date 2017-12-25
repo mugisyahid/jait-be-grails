@@ -1,0 +1,9 @@
+import com.jait.Order
+
+inherits template: '/hal'
+
+model {
+    Order order
+}
+
+json g.render(order, [includes: ['number', 'customer']])

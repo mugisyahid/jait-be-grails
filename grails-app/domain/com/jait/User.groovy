@@ -20,6 +20,12 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+    Set<Product> products = [] as Set<Product>
+
+    //additional Properties
+    static hasMany = [products: Product]
+
+
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
     }

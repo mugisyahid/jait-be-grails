@@ -20,8 +20,17 @@ class UrlMappings {
         '/register'(controller: 'user', action: 'register', method: "POST")
 
        group('/admin'){
-           '/user'(resources: 'user', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
-           '/role'(resources: 'role', namespace: 'admin', includes: [ACTION_INDEX])
+           '/user'(resources: 'user',   namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+           '/role'(resources: 'role',   namespace: 'admin', includes: [ACTION_INDEX])
+
+           '/order'(resources: 'order', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+           '/productOrder'(resources: 'productOrder', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+
        }
+
+        group('/api'){
+            '/product'(resources: 'product',    namespace: 'api', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+            '/promo'(resources: 'promo',        namespace: 'api', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+        }
     }
 }

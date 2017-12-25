@@ -1,8 +1,6 @@
 package com.jait.service
 
-import com.jait.Role
-import com.jait.User
-import com.jait.UserRole
+import com.jait.*
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 import groovy.json.JsonSlurper
@@ -17,7 +15,7 @@ class BootStrapService {
 
 
     void appInit() {
-        List<Class> bootStrap = [Role, User]
+        List<Class> bootStrap = [Role, User, Product, Order, ProductOrder]
 
         bootStrap.each {
             List<Map> data = parseJson("bootstrap/${it.simpleName}.json")
@@ -66,6 +64,31 @@ class BootStrapService {
         }
 
         return user
+    }
+
+    void initProduct(List<Map> data) {
+        for (Map entry : data) {
+            Product product = new Product(entry)
+            product.user = User.findById(entry.user)
+            product.save() ?: log.warn(product.errors as String)
+        }
+    }
+
+    void initOrder(List<Map> data) {
+        for (Map entry : data) {
+            Order order = new Order(entry)
+            order.customer = User.findById(entry.user)
+            order.save() ?: log.warn(order.errors as String)
+        }
+    }
+
+    void initProductOrder(List<Map> data) {
+        for (Map entry : data) {
+            ProductOrder productOrder = new ProductOrder(entry)
+            productOrder.product = Product.findById(entry.product)
+            productOrder.order = Order.findById(entry.order)
+            productOrder.save() ?: log.warn(productOrder.errors as String)
+        }
     }
 
 

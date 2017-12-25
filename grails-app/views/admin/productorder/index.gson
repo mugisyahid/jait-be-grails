@@ -1,0 +1,7 @@
+import com.jait.ProductOrder
+
+model{
+    List<ProductOrder> productOrders = []
+}
+
+json tmpl.productorder(productOrders ?: [])

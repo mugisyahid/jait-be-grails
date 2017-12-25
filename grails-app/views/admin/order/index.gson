@@ -1,0 +1,8 @@
+
+import com.jait.Order
+
+model{
+    List<Order> orders = []
+}
+
+json tmpl.order(orders ?: [])

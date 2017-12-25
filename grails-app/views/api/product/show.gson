@@ -1,0 +1,9 @@
+package api.product
+
+import com.jait.Product
+
+model {
+    Product product
+}
+
+json tmpl.product(product: product)
