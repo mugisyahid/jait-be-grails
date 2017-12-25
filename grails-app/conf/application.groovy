@@ -16,6 +16,7 @@ grails.plugin.springsecurity.rest.token.storage.jwt.useSignedJwt = true
 
 //logout
 grails.plugin.springsecurity.rest.logout.endpointUrl = '/api/logout'
+//grails.plugin.springsecurity.rest.token.validation.headerName = ''
 
 final String anonymousFilter = 'anonymousAuthenticationFilter,restTokenValidationFilter,' +
 		'restExceptionTranslationFilter,filterInvocationInterceptor'
@@ -42,11 +43,13 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	[pattern: '/api/login',             access: ['ROLE_ANONYMOUS']],
 	[pattern: '/logout/**',             access: ['isFullyAuthenticated()']],
 	[pattern: '/api/logout',            access: ['isFullyAuthenticated()']],
-	[pattern: '/oauth/access_token',    access: ['ROLE_ANONYMOUS']],
+	[pattern: '/oauth/access_token',    access: ['permitAll']],
 
 	[pattern: '/register', 				access: ['permitAll']],
+
 	[pattern: '/admin/**',              access: ['isFullyAuthenticated()']],
 
+	[pattern: '/api/**', 				access: ['permitAll']],
 
 ]
 
@@ -58,6 +61,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/images/**',   filters: anonymousFilter],
 	[pattern: '/**/favicon.ico', filters: anonymousFilter],
 
+	//api
 	[pattern: '/admin/**', 			filters: statelessFilter],
 
 	[pattern: '/**',             	filters: traditionalFilter]
