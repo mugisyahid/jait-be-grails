@@ -31,6 +31,8 @@ endpoints:
 
 ---
 grails:
+    cors:
+        enable: true #http://docs.grails.org/latest/guide/theWebLayer.html#cors
     mime:
         disable:
             accept:
