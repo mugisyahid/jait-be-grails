@@ -40,6 +40,7 @@ class UserController extends CommonController {
             return render (cmd.errors as JSON)
         }
         User user = userService.register(cmd)
+        userService.setRole(user, cmd.roles)
         user.hasErrors() ? render (user.errors as JSON) : render(view: 'register', model: [user: user])
     }
 }
