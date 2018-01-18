@@ -103,7 +103,7 @@ dataSource:
 environments:
     development:
         grails.plugin.springsecurity:
-          active: false          # enable/disable springsecurity
+          active: true          # enable/disable springsecurity
           debug.useFilter: true  #logging filter
         dataSource:
             dbCreate: create-drop
