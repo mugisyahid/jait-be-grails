@@ -48,7 +48,7 @@ class BootStrapService {
         User user = User.findByUsername(data.username) ?: new User(data)
 
         if (!user.id) {
-            user.setProperty('password', 'pass')
+//            user.setProperty('password', 'pass')
 
             if (user.validate()) {
                 user.save()
