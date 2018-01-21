@@ -13,7 +13,7 @@ class UserController extends CommonController {
 
     static namespace = 'admin'
 
-    static allowedMethods = [register: HttpMethod.POST.name()]
+    static allowedMethods = [register: HttpMethod.POST.name(), profile: HttpMethod.POST.name()]
 
     UserService userService
 
@@ -23,6 +23,10 @@ class UserController extends CommonController {
 
     def show(long id) {
         respond(user: User.findById(id))
+    }
+
+    def profile(RegisterCommand cmd) {
+        render(view: 'show', model: [user: User.findByUsername(cmd.username)])
     }
 
     def update(long id) {
@@ -41,6 +45,6 @@ class UserController extends CommonController {
         }
         User user = userService.register(cmd)
         userService.setRole(user, cmd.roles)
-        user.hasErrors() ? render (user.errors as JSON) : render(view: 'register', model: [user: user])
+        user.hasErrors() ? render (user.errors as JSON) : render(view: 'show', model: [user: user])
     }
 }

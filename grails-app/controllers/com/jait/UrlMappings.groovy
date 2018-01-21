@@ -21,6 +21,7 @@ class UrlMappings {
 
        group('/admin'){
            '/user'(resources: 'user',   namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+           '/user/profile'(controller: 'user', action: 'profile', method: "POST")
            '/role'(resources: 'role',   namespace: 'admin', includes: [ACTION_INDEX])
 
            '/order'(resources: 'order', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
