@@ -25,7 +25,7 @@ class UserController extends CommonController {
         respond(user: User.findById(id))
     }
 
-    def profile(RegisterCommand cmd) {
+    def profile(User cmd) {
         render(view: 'show', model: [user: User.findByUsername(cmd.username)])
     }
 
