@@ -12,7 +12,7 @@ class OrderSpec extends Specification implements DomainUnitTest<Order> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        expect: "fix me"
+        true == false
     }
 }

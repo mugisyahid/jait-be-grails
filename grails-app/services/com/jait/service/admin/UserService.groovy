@@ -7,6 +7,7 @@ import com.jait.command.admin.RegisterCommand
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
+import org.joda.time.LocalDateTime
 
 @Transactional
 @GrailsCompileStatic
@@ -19,7 +20,7 @@ class UserService {
         user.save() ?: user
     }
 
-    void setRole(User user, List<String> roles){
+    void setRole(User user, List<String> roles) {
         roles.each {
             Role role = Role.findByAuthority(it)
             UserRole.create(user, role)

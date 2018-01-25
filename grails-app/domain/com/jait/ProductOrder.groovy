@@ -11,6 +11,6 @@ class ProductOrder {
 
     String request
 
-    static belongsTo = [order:Order]
+    static belongsTo = [order: Order]
 
 }

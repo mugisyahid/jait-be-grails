@@ -8,7 +8,11 @@
     "accountLocked": false,
     "passwordExpired": false,
     "remark": "keterangan",
-    "roles": [ "ROLE_SYSTEM" ]
+    "gender": "MALE",
+    "phone": "+62857123123",
+    "roles": [
+      "ROLE_SYSTEM"
+    ]
   },
   {
     "username": "admin@kopong.com",
@@ -19,28 +23,25 @@
     "accountLocked": false,
     "passwordExpired": false,
     "remark": "keterangan jati diri1",
-    "roles": [ "ROLE_ADMIN" ]
+    "gender": "MALE",
+    "phone": "+62851237123123",
+    "roles": [
+      "ROLE_ADMIN"
+    ]
   },
   {
-    "username": "konveksi@kopong.com",
-    "name": "konveksi",
+    "username": "customer@kopong.com",
+    "name": "customer",
     "password": "abc",
     "enabled": true,
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
-    "remark": "keterangan jati diri - orang ganteng",
-    "roles": [ "ROLE_KONVEKSI" ]
-  },
-  {
-  "username": "customer@kopong.com",
-  "name": "customer",
-  "password": "abc",
-  "enabled": true,
-  "accountExpired": false,
-  "accountLocked": false,
-  "passwordExpired": false,
-  "remark": "keterangan jati diri - huehue",
-  "roles": [ "ROLE_CUSTOMER" ]
+    "remark": "orang ganteng",
+    "gender": "MALE",
+    "phone": "+62857123112312323",
+    "roles": [
+      "ROLE_CUSTOMER"
+    ]
   }
 ]

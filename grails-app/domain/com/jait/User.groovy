@@ -1,12 +1,12 @@
 package com.jait
 
+import grails.compiler.GrailsCompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
-import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
-@EqualsAndHashCode(includes='username')
-@ToString(includes='username', includeNames=true, includePackage=false)
+@EqualsAndHashCode(includes = 'username')
+@ToString(includes = 'username', includeNames = true, includePackage = false)
 class User implements Serializable {
 
     private static final long serialVersionUID = 1
@@ -20,9 +20,13 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+    //additional Properties
+    String phone
+    Gender gender
+
     Set<Product> products = [] as Set<Product>
 
-    //additional Properties
+
     static hasMany = [products: Product]
 
 
@@ -36,6 +40,6 @@ class User implements Serializable {
     }
 
     static mapping = {
-	    password column: '`password`'
+        password column: '`password`'
     }
 }

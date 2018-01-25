@@ -1,20 +1,20 @@
-[{
-  "quantity" : 20,
-  "request"  : "baju merah",
-  "product"  : 1,
-  "order"    : 1
-},
+[
   {
-    "quantity" : 100,
-    "request"  : "baju biru",
-    "product"  : 1,
-    "order"    : 1
+    "quantity": 20,
+    "request": "baju merah",
+    "product": 1,
+    "order": 1
   },
   {
-    "quantity" : 50,
-    "request"  : "baju alien",
-    "product"  : 1,
-    "order"    : 2
+    "quantity": 100,
+    "request": "baju biru",
+    "product": 1,
+    "order": 1
+  },
+  {
+    "quantity": 50,
+    "request": "baju alien",
+    "product": 1,
+    "order": 2
   }
-
 ]

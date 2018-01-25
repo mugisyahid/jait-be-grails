@@ -3,13 +3,12 @@
     "name": "baju",
     "price": 10000,
     "description": "baju bagus",
-    "user" : 1
+    "user": 1
   },
   {
     "name": "celana",
     "price": 10000,
     "description": "celana bagus",
-    "user" : 2
+    "user": 2
   }
-
 ]

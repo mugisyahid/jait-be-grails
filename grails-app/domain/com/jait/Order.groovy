@@ -1,17 +1,12 @@
 package com.jait
 
-import org.joda.time.LocalDateTime
-
-
 class Order {
 
     String number
 
-    LocalDateTime orderTime = new LocalDateTime()
+    static belongsTo = [customer: User]
 
-    static belongsTo = [customer:User]
-
-    static hasMany = [productOrders:ProductOrder]
+    static hasMany = [productOrders: ProductOrder]
 
     static constraints = {
     }

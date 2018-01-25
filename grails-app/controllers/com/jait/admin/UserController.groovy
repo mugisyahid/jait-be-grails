@@ -29,8 +29,8 @@ class UserController extends CommonController {
         render(view: 'show', model: [user: User.findByUsername(cmd.username)])
     }
 
-    def update(long id) {
-
+    def update(User user) {
+        save(user)
     }
 
     def save(User user) {
@@ -39,12 +39,12 @@ class UserController extends CommonController {
     }
 
 
-    def register(RegisterCommand cmd){
+    def register(RegisterCommand cmd) {
         if (!cmd.validate()) {
-            return render (cmd.errors as JSON)
+            return render(cmd.errors as JSON)
         }
         User user = userService.register(cmd)
         userService.setRole(user, cmd.roles)
-        user.hasErrors() ? render (user.errors as JSON) : render(view: 'show', model: [user: user])
+        user.hasErrors() ? render(user.errors as JSON) : render(view: 'show', model: [user: user])
     }
 }

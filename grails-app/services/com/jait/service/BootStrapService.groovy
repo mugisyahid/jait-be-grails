@@ -3,7 +3,10 @@ package com.jait.service
 import com.jait.*
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
+import grails.transaction.Transactional
 import groovy.json.JsonSlurper
+
+import org.joda.time.LocalDateTime
 
 /**
  * Created by zeldris on 15/12/17.
@@ -12,7 +15,6 @@ import groovy.json.JsonSlurper
 @Transactional
 @GrailsCompileStatic
 class BootStrapService {
-
 
     void appInit() {
         List<Class> bootStrap = [Role, User, Product, Order, ProductOrder]
@@ -48,8 +50,6 @@ class BootStrapService {
         User user = User.findByUsername(data.username) ?: new User(data)
 
         if (!user.id) {
-//            user.setProperty('password', 'pass')
-
             if (user.validate()) {
                 user.save()
 

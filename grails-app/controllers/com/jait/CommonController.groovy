@@ -9,7 +9,7 @@ import org.springframework.validation.Errors
 abstract class CommonController {
 
     static allowedMethods = [index : HttpMethod.GET.name(), show: HttpMethod.GET.name(),
-                             save: HttpMethod.POST.name(), update: HttpMethod.PUT.name(),
+                             save  : HttpMethod.POST.name(), update: HttpMethod.PUT.name(),
                              delete: HttpMethod.DELETE.name()]
 
     static responseFormats = ['json']

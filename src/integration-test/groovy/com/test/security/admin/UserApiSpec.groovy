@@ -3,6 +3,7 @@ package com.test.security.admin
 import grails.plugins.rest.client.RestBuilder
 import grails.testing.mixin.integration.Integration
 import spock.lang.Specification
+
 /**
  * Created by zeldris on 23/12/17.
  */
