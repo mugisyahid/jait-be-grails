@@ -6,4 +6,4 @@ model {
     User user
 }
 
-json g.render(user, [includes: ['id', 'username', 'name', 'remark', 'gender', 'phone']])
+json g.render(user, [includes: ['id', 'username', 'name', 'remark', 'gender', 'phone', 'about']])

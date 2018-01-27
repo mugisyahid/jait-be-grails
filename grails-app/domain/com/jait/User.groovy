@@ -20,15 +20,17 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
-    //additional Properties
+    //simple object
     String phone
+    String about
+
+    //entity
     Gender gender
 
+    //relation
     Set<Product> products = [] as Set<Product>
 
-
     static hasMany = [products: Product]
-
 
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
@@ -37,6 +39,7 @@ class User implements Serializable {
     static constraints = {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true
+        about nullable: true
     }
 
     static mapping = {

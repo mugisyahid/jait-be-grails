@@ -1,3 +1,6 @@
+//rendering json
+grails.converters.json.default.deep = true
+
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.jait.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.jait.UserRole'
@@ -36,17 +39,16 @@ grails.plugin.springsecurity.interceptUrlMap = [
         [pattern: '/**/css/**', access: ['permitAll']],
         [pattern: '/**/images/**', access: ['permitAll']],
         [pattern: '/**/favicon.ico', access: ['permitAll']],
-
+        //auth api
         [pattern: '/login/**', access: ['permitAll']],
         [pattern: '/api/login', access: ['ROLE_ANONYMOUS']],
         [pattern: '/logout/**', access: ['isFullyAuthenticated()']],
         [pattern: '/api/logout', access: ['isFullyAuthenticated()']],
         [pattern: '/oauth/access_token', access: ['permitAll']],
-
         [pattern: '/register', access: ['permitAll']],
-
+        //secure api
         [pattern: '/admin/**', access: ['isFullyAuthenticated()']],
-
+        //public api
         [pattern: '/api/**', access: ['permitAll']],
 
 ]
