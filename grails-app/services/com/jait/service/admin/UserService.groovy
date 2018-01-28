@@ -6,8 +6,6 @@ import com.jait.UserRole
 import com.jait.command.admin.RegisterCommand
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
-import grails.plugin.springsecurity.SpringSecurityService
-import org.joda.time.LocalDateTime
 
 @Transactional
 @GrailsCompileStatic

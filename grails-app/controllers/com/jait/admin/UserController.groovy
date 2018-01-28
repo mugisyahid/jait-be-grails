@@ -6,10 +6,10 @@ import com.jait.command.admin.RegisterCommand
 import com.jait.service.admin.UserService
 import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
+import grails.gorm.transactions.Transactional
 import org.springframework.http.HttpMethod
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
-import static org.springframework.http.HttpStatus.OK
 
 @GrailsCompileStatic
 class UserController extends CommonController {
@@ -46,10 +46,11 @@ class UserController extends CommonController {
         save(user)
     }
 
+    @Transactional
     def save(User user) {
         user.validate()
-        user.save()
-        render(view: 'show', model: [user: user)])
+        user.save(flush: true)
+        render(view: 'show', model: [user: user])
     }
 
 
