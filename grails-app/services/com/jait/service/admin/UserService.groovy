@@ -13,8 +13,6 @@ import org.joda.time.LocalDateTime
 @GrailsCompileStatic
 class UserService {
 
-    SpringSecurityService springSecurityService
-
     User register(RegisterCommand cmd) {
         User user = new User(name: cmd.name, username: cmd.username, password: cmd.password, remark: cmd.remark)
         user.save() ?: user

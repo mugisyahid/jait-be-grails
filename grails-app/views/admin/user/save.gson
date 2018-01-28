@@ -1,5 +1,3 @@
-package admin.user
-
 import com.jait.User
 
 model {

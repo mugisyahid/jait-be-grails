@@ -8,6 +8,9 @@ import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import org.springframework.http.HttpMethod
 
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.OK
+
 @GrailsCompileStatic
 class UserController extends CommonController {
 
@@ -30,12 +33,23 @@ class UserController extends CommonController {
     }
 
     def update(User user) {
+        if (user == null) {
+            render status: NOT_FOUND
+            return
+        }
+
+        if (user.hasErrors()) {
+            respond user.errors, view: 'show'
+            return
+        }
+
         save(user)
     }
 
     def save(User user) {
         user.validate()
         user.save()
+        render(view: 'show', model: [user: user)])
     }
 
 
