@@ -6,4 +6,4 @@ model {
     ProductOrder productorder
 }
 
-json g.render(productorder, [includes: ['product', 'quantity', 'quantity', 'order']])
+json g.render(productorder)

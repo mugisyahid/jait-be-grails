@@ -6,4 +6,4 @@ model {
     Product product
 }
 
-json g.render(product, [ includes: ['id', 'name', 'price', 'description', 'user']])
+json g.render(product)

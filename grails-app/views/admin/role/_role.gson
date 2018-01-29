@@ -6,4 +6,4 @@ model {
     Role role
 }
 
-json g.render(role, [includes: ['authority', 'description']])
+json g.render(role)
