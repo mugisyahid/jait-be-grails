@@ -10,6 +10,7 @@
     "remark": "keterangan",
     "gender": "MALE",
     "phone": "+62857123123",
+    "imageName": "user1.jpg",
     "roles": [
       "ROLE_SYSTEM"
     ]
@@ -25,6 +26,7 @@
     "remark": "keterangan jati diri1",
     "gender": "MALE",
     "phone": "+62851237123123",
+    "imageName": "user2.jpg",
     "roles": [
       "ROLE_ADMIN"
     ]
@@ -40,6 +42,7 @@
     "remark": "orang ganteng",
     "gender": "MALE",
     "phone": "+62857123112312323",
+    "imageName": "user3.jpg",
     "roles": [
       "ROLE_CUSTOMER"
     ]

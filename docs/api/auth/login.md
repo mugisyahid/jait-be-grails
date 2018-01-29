@@ -8,7 +8,7 @@
 
 * **URL**
 
-  /login
+  /api/login
 
 * **Method:**
   

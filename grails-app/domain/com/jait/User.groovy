@@ -24,6 +24,9 @@ class User implements Serializable {
     String phone
     String about
 
+    //only save name of files.
+    String imageName
+
     //entity
     Gender gender
 
@@ -39,6 +42,7 @@ class User implements Serializable {
     static constraints = {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true
+        imageName nullable: true
     }
 
     static mapping = {
