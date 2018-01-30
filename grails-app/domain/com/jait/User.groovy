@@ -1,5 +1,6 @@
 package com.jait
 
+import com.jait.constant.Gender
 import grails.compiler.GrailsCompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -42,8 +43,10 @@ class User implements Serializable {
     static constraints = {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true
+        phone nullable: true, blank: true
         about nullable: true, blank: true
         imageName nullable: true, blank: true
+        gender nullable: true, blank: true
     }
 
     static mapping = {

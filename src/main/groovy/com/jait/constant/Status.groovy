@@ -1,3 +1,5 @@
+package com.jait.constant
+
 import groovy.transform.CompileStatic
 
 @CompileStatic

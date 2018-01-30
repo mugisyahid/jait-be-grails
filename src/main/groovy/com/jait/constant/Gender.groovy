@@ -1,3 +1,8 @@
+package com.jait.constant
+
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 enum Gender {
     MALE('Male'),
     FEMALE('Female')
