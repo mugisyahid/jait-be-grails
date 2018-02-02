@@ -12,7 +12,7 @@
     "phone": "+62857123123",
     "imageName": "user1.png",
     "roles": [
-      "ROLE_SYSTEM"
+      "ROLE_SYSTEM", "ROLE_CUSTOMER"
     ]
   },
   {
