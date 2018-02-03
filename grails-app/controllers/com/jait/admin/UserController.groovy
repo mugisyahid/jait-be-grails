@@ -8,7 +8,7 @@ import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
-import grails.plugin.springsecurity.annotation.Secured
+import org.grails.web.json.JSONObject
 import org.springframework.http.HttpMethod
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
@@ -18,7 +18,7 @@ class UserController extends CommonController {
 
     static namespace = 'admin'
 
-    static allowedMethods = [register: HttpMethod.POST.name(), profile: HttpMethod.POST.name()]
+    static allowedMethods = [register: HttpMethod.POST.name(), profile: HttpMethod.POST.name(), enableUser: HttpMethod.PUT.name()]
 
     UserService userService
     SpringSecurityService springSecurityService
@@ -60,6 +60,14 @@ class UserController extends CommonController {
         render(view: 'show', model: [user: user])
     }
 
+    @Transactional
+    def enableUser() {
+        def json = request.getJSON() as JSONObject
+        def user = User.findById(json.get('id'))
+        user.enabled = !user.enabled
+        user.save()
+        render(view: 'show', model: [user: user])
+    }
 
     def register(RegisterCommand cmd) {
         if (!cmd.validate()) {
