@@ -1,3 +1,8 @@
+// ACL
+//grails.plugin.springsecurity.acl.authority.modifyAuditingDetails = 'ROLE_SYSTEM'
+//grails.plugin.springsecurity.acl.authority.changeOwnership = 'ROLE_SYSTEM'
+//grails.plugin.springsecurity.acl.authority.changeAclDetails = 'ROLE_SYSTEM'
+
 //rendering json
 grails.converters.json.default.deep = true
 

@@ -7,6 +7,8 @@ import com.jait.service.admin.UserService
 import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import grails.gorm.transactions.Transactional
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.http.HttpMethod
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
@@ -19,12 +21,17 @@ class UserController extends CommonController {
     static allowedMethods = [register: HttpMethod.POST.name(), profile: HttpMethod.POST.name()]
 
     UserService userService
+    SpringSecurityService springSecurityService
 
+    //doesnt work
+    //@Secured("(['ROLE_SYSTEM', 'ROLE_ADMIN'])")
     def index() {
+        def username = springSecurityService.authentication.authorities
         respond(users: User.findAll())
     }
 
     def show(long id) {
+
         respond(user: User.findById(id))
     }
 

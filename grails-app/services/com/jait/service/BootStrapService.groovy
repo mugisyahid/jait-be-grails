@@ -3,10 +3,7 @@ package com.jait.service
 import com.jait.*
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
-import grails.transaction.Transactional
 import groovy.json.JsonSlurper
-
-import org.joda.time.LocalDateTime
 
 /**
  * Created by zeldris on 15/12/17.
