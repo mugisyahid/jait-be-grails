@@ -8,6 +8,7 @@ import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
+import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject
 import org.springframework.http.HttpMethod
 
@@ -24,10 +25,10 @@ class UserController extends CommonController {
     SpringSecurityService springSecurityService
 
     //doesnt work
-    //@Secured("(['ROLE_SYSTEM', 'ROLE_ADMIN'])")
+    @Secured("(['ROLE_SYSTEM', 'ROLE_ADMIN'])")
     def index() {
-        def username = springSecurityService.authentication.authorities
-        respond(users: User.findAll())
+        def id = springSecurityService.getCurrentUserId()
+        respond(users: User.findAll("from User as U where U.id not in (?) ", [id]))
     }
 
     def show(long id) {
