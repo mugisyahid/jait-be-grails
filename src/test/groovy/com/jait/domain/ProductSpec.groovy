@@ -1,9 +1,10 @@
-package com.jait
+package com.jait.domain
 
+import com.jait.Product
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class PromoSpec extends Specification implements DomainUnitTest<Promo> {
+class ProductSpec extends Specification implements DomainUnitTest<Product> {
 
     def setup() {
     }

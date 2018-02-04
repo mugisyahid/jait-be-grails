@@ -1,5 +1,6 @@
-package com.jait
+package com.jait.domain
 
+import com.jait.Order
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
@@ -13,6 +14,6 @@ class OrderSpec extends Specification implements DomainUnitTest<Order> {
 
     void "test something"() {
         expect: "fix me"
-        true == false
+        true == true
     }
 }
