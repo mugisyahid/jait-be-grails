@@ -24,6 +24,7 @@ class User implements Serializable {
     //simple object
     String phone
     String about
+    Long registered
 
     //only save name of files.
     String imageName

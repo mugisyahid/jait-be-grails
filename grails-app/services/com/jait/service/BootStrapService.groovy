@@ -4,6 +4,7 @@ import com.jait.*
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 import groovy.json.JsonSlurper
+import org.joda.time.LocalDateTime
 
 /**
  * Created by zeldris on 15/12/17.
@@ -45,6 +46,7 @@ class BootStrapService {
 
     User initUser(Map data) {
         User user = User.findByUsername(data.username) ?: new User(data)
+        user.registered = new LocalDateTime().toDate().getTime()
 
         if (!user.id) {
             if (user.validate()) {

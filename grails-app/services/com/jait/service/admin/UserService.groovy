@@ -6,6 +6,8 @@ import com.jait.UserRole
 import com.jait.command.admin.RegisterCommand
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
+import org.joda.time.LocalDateTime
+
 
 @Transactional
 @GrailsCompileStatic
@@ -13,6 +15,7 @@ class UserService {
 
     User register(RegisterCommand cmd) {
         User user = new User(name: cmd.name, username: cmd.username, password: cmd.password, remark: cmd.remark)
+        user.registered = new LocalDateTime().toDate().getTime()
         user.save() ?: user
     }
 
