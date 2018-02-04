@@ -1,6 +1,7 @@
 package com.jait.service
 
 import com.jait.*
+import com.jait.constant.Status
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 import groovy.json.JsonSlurper
@@ -46,6 +47,7 @@ class BootStrapService {
 
     User initUser(Map data) {
         User user = User.findByUsername(data.username) ?: new User(data)
+        user.status = Status.ACTIVE
         user.registered = new LocalDateTime().toDate().getTime()
 
         if (!user.id) {

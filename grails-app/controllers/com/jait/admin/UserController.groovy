@@ -32,7 +32,6 @@ class UserController extends CommonController {
     }
 
     def show(long id) {
-
         respond(user: User.findById(id))
     }
 
@@ -50,7 +49,6 @@ class UserController extends CommonController {
             respond user.errors, view: 'show'
             return
         }
-
         save(user)
     }
 

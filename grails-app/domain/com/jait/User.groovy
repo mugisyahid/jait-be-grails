@@ -1,6 +1,7 @@
 package com.jait
 
 import com.jait.constant.Gender
+import com.jait.constant.Status
 import grails.compiler.GrailsCompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -25,12 +26,11 @@ class User implements Serializable {
     String phone
     String about
     Long registered
-
-    //only save name of files.
-    String imageName
+    String imageName //only save name of files.
 
     //entity
     Gender gender
+    Status status
 
     //relation
     Set<Product> products = [] as Set<Product>
