@@ -27,12 +27,12 @@ class UrlMappings {
             '/role'(resources: 'role', namespace: 'admin', includes: [ACTION_INDEX])
 
             '/order'(resources: 'order', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
-            '/productOrder'(resources: 'productOrder', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+            '/productOrder'(resources: 'productOrder', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE])
 
         }
 
         group('/api') {
-            '/product'(resources: 'product', namespace: 'api', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
+            '/product'(resources: 'product', namespace: 'api', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE, ACTION_CREATE])
             '/promo'(resources: 'promo', namespace: 'api', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
         }
     }

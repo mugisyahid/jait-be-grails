@@ -71,6 +71,7 @@ class BootStrapService {
         for (Map entry : data) {
             Product product = new Product(entry)
             product.user = User.findById(entry.user)
+            product.createdTime = new LocalDateTime().toDate().getTime()
             product.save() ?: log.warn(product.errors as String)
         }
     }
