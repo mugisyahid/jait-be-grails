@@ -31,6 +31,10 @@ endpoints:
 
 ---
 grails:
+    cloudinary:
+        apiKey: '232283883114787'
+        apiSecret: 'icLzXl7e9XcO5k4Lz4nsglXJ'
+        cloudName: 'dhg9t661w'
     cors:
         enable: true #http://docs.grails.org/latest/guide/theWebLayer.html#cors
     mime:
@@ -70,6 +74,9 @@ grails:
             maxsize: 1000
     controllers:
         defaultScope: singleton
+        upload:
+          maxFileSize: 26214400 #25mb size
+          maxRequestSize: 26214400
     converters:
         encoding: UTF-8
     views:

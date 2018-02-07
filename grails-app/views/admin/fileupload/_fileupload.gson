@@ -1,9 +1,0 @@
-import com.jait.FileUpload
-
-inherits template: '/hal'
-
-model {
-    FileUpload fileUpload
-}
-
-json g.render(fileUpload)

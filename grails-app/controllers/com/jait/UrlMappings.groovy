@@ -23,6 +23,9 @@ class UrlMappings {
             '/user'(resources: 'user', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
             '/user/profile'(controller: 'user', action: 'profile', method: "POST")
             '/user/enableUser'(controller: 'user', action: 'enableUser', method: "PUT")
+            '/user/updateImage'(controller: 'user', action: 'updateImage', method: "POST")
+
+            '/file'(resources: 'fileupload', namespace: 'admin', includes: [ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
 
             '/role'(resources: 'role', namespace: 'admin', includes: [ACTION_INDEX])
 

@@ -4,6 +4,7 @@ import com.jait.CommonController
 import com.jait.User
 import com.jait.command.admin.RegisterCommand
 import com.jait.service.admin.UserService
+import com.jait.service.file.ImageService
 import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import grails.gorm.transactions.Transactional
@@ -11,6 +12,10 @@ import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject
 import org.springframework.http.HttpMethod
+import sun.misc.BASE64Decoder
+
+import javax.imageio.ImageIO
+import java.awt.image.BufferedImage
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
 
@@ -19,9 +24,11 @@ class UserController extends CommonController {
 
     static namespace = 'admin'
 
-    static allowedMethods = [register: HttpMethod.POST.name(), profile: HttpMethod.POST.name(), enableUser: HttpMethod.PUT.name()]
+    static allowedMethods = [register  : HttpMethod.POST.name(), profile: HttpMethod.POST.name(),
+                             enableUser: HttpMethod.PUT.name(), updateImage: HttpMethod.POST.name()]
 
     UserService userService
+    ImageService imageService
     SpringSecurityService springSecurityService
 
     //doesnt work
@@ -75,5 +82,28 @@ class UserController extends CommonController {
         User user = userService.register(cmd)
         userService.setRole(user, cmd.roles)
         user.hasErrors() ? render(user.errors as JSON) : render(view: 'show', model: [user: user])
+    }
+
+    @Transactional
+    def updateImage() {
+        def json = request.getJSON() as JSONObject
+        User user = User.findById(json.get('id'))
+        if (user.image) {
+            //delete existing
+            //imageService.delete(user.image.get(0), [:])
+        }
+
+        BASE64Decoder decoder = new BASE64Decoder();
+        byte[] imageByte = decoder.decodeBuffer((String) json.get('value'));
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+        BufferedImage image = ImageIO.read(bis);
+        bis.close();
+        // write the image to a file
+        File outputfile = new File("image.png");
+        ImageIO.write(image, "png", outputfile);
+
+        user.image = imageService.upload(outputfile.getAbsolutePath(), [:])
+        user.save()
+        return user.image.get(1) //url
     }
 }

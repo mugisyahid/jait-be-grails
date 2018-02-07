@@ -2,6 +2,7 @@ package com.jait.service
 
 import com.jait.*
 import com.jait.constant.Status
+import com.jait.service.file.ImageService
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 import groovy.json.JsonSlurper
@@ -14,6 +15,8 @@ import org.joda.time.LocalDateTime
 @Transactional
 @GrailsCompileStatic
 class BootStrapService {
+
+    ImageService imageService
 
     void appInit() {
         List<Class> bootStrap = [Role, User, Product, Order, ProductOrder]
@@ -49,6 +52,8 @@ class BootStrapService {
         User user = User.findByUsername(data.username) ?: new User(data)
         user.status = Status.ACTIVE
         user.registered = new LocalDateTime().toDate().getTime()
+        String url = imageService.urlFromImageTag((String) data.imageName)
+        user.image = ["", url.substring(url.indexOf('\'') + 1, url.lastIndexOf('\''))] as List
 
         if (!user.id) {
             if (user.validate()) {
@@ -92,7 +97,6 @@ class BootStrapService {
             productOrder.save() ?: log.warn(productOrder.errors as String)
         }
     }
-
 
     private List parseJson(String resource) {
         List jsonData = []

@@ -1,7 +1,0 @@
-import com.jait.FileUpload
-
-model {
-    FileUpload fileUpload
-}
-
-json tmpl.fileUpload(fileUpload: fileUpload)

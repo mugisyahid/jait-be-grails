@@ -26,7 +26,7 @@ class User implements Serializable {
     String phone
     String about
     Long registered
-    String imageName //only save name of files.
+    List<String> image //public_id and url
 
     //entity
     Gender gender
@@ -46,7 +46,7 @@ class User implements Serializable {
         username nullable: false, blank: false, unique: true
         phone nullable: true, blank: true
         about nullable: true, blank: true
-        imageName nullable: true, blank: true
+        image nullable: true, blank: true
         gender nullable: true, blank: true
     }
 

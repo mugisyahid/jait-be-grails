@@ -27,8 +27,6 @@ repositories {
 }
 
 dependencies {
-
-
     profile 'org.grails.profiles:rest-api'
 
     console 'org.grails:grails-console'
@@ -68,6 +66,9 @@ dependencies {
 
     compile 'org.hibernate:hibernate-core:5.2.11.Final'
     compile 'org.hibernate:hibernate-java8:5.2.11.Final'
+
+    //image upload
+    compile 'com.cloudinary:cloudinary:1.0.14'
 
     runtime "com.h2database:h2"
     runtime "org.apache.tomcat:tomcat-jdbc"
