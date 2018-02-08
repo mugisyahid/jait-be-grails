@@ -14,9 +14,6 @@ import org.grails.web.json.JSONObject
 import org.springframework.http.HttpMethod
 import sun.misc.BASE64Decoder
 
-import javax.imageio.ImageIO
-import java.awt.image.BufferedImage
-
 import static org.springframework.http.HttpStatus.NOT_FOUND
 
 @GrailsCompileStatic
@@ -89,20 +86,14 @@ class UserController extends CommonController {
         def json = request.getJSON() as JSONObject
         User user = User.findById(json.get('id'))
         if (user.image) {
-            //delete existing
-            //imageService.delete(user.image.get(0), [:])
+            //delete existing, failed because string to sign
+            //Invalid Signature 1981081d763b716454a1c17df0537f4365c63a1c. String to sign - 'invalidate=false&public_id=user/vojwluofllejd0axbhzg&timestamp=1518098033'.
+            //if(user.image.get(0)) imageService.delete(user.image.get(0), [:])
         }
 
         BASE64Decoder decoder = new BASE64Decoder();
         byte[] imageByte = decoder.decodeBuffer((String) json.get('value'));
-        ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-        BufferedImage image = ImageIO.read(bis);
-        bis.close();
-        // write the image to a file
-        File outputfile = new File("image.png");
-        ImageIO.write(image, "png", outputfile);
-
-        user.image = imageService.upload(outputfile.getAbsolutePath(), [:])
+        user.image = imageService.upload(imageByte, ['folder': 'user/', 'resource_type': 'image'])
         user.save()
         return user.image.get(1) //url
     }
