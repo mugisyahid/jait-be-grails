@@ -14,4 +14,5 @@ class ProductCommand implements Validateable {
 
     //entity
     Long storeId;
+    Long productCategoryId;
 }

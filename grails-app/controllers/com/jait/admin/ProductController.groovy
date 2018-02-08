@@ -2,6 +2,7 @@ package com.jait.admin
 
 import com.jait.CommonController
 import com.jait.Product
+import com.jait.ProductCategory
 import com.jait.Store
 import com.jait.User
 import com.jait.command.api.ProductCommand
@@ -35,6 +36,7 @@ class ProductController extends CommonController {
         }
         Product product = new Product(cmd)
         product.store = Store.findById(cmd.storeId)
+        product.productCategory = ProductCategory.findById(cmd.productCategoryId)
         product.save()
         product.hasErrors() ? render(product.errors as JSON) : render(view: 'show', model: [product: product])
     }
