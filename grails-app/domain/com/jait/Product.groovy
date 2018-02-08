@@ -14,6 +14,7 @@ class Product {
     double rating = 0
     Long createdTime
 
+    ProductCategory productCategory
 
     Product (ProductCommand cmd){
         this.name = cmd.name
@@ -24,7 +25,7 @@ class Product {
         this.createdTime = new LocalDateTime().toDate().getTime()
     }
 
-    static belongsTo = [user: User]
+    static belongsTo = [store: Store]
 
     static constraints = {
     }

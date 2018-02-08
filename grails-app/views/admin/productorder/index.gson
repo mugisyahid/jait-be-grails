@@ -4,4 +4,4 @@ model{
     List<ProductOrder> productOrders = []
 }
 
-json tmpl.productorder(productOrders ?: [])
+json tmpl.productOrder(productOrders ?: [])

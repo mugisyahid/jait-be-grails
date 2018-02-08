@@ -2,10 +2,9 @@ package com.jait.admin
 
 import com.jait.CommonController
 import com.jait.ProductOrder
+import grails.compiler.GrailsCompileStatic
 
-/**
- * Created by zeldris on 25/12/17.
- */
+@GrailsCompileStatic
 class ProductOrderController extends CommonController {
 
     static namespace = 'admin'

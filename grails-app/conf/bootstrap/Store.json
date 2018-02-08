@@ -1,0 +1,12 @@
+[
+  {
+    "name": "sysadmin store",
+    "description": "sysadmin awesome store",
+    "user": 1
+  },
+  {
+    "name": "customer store",
+    "description": "customer awesome store",
+    "user": 3
+  }
+]

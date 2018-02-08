@@ -1,11 +1,8 @@
 package com.jait
 
-class Promo {
+class ProductCategory {
 
     String name
     String description
 
-
-    static constraints = {
-    }
 }

@@ -33,9 +33,7 @@ class User implements Serializable {
     Status status
 
     //relation
-    Set<Product> products = [] as Set<Product>
-
-    static hasMany = [products: Product]
+    static hasOne = [store: Store]
 
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
@@ -48,6 +46,7 @@ class User implements Serializable {
         about nullable: true, blank: true
         image nullable: true, blank: true
         gender nullable: true, blank: true
+        store nullable: true, blank: true, unique: true
     }
 
     static mapping = {

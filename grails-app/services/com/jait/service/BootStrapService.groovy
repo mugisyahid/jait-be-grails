@@ -19,7 +19,7 @@ class BootStrapService {
     ImageService imageService
 
     void appInit() {
-        List<Class> bootStrap = [Role, User, Product, Order, ProductOrder]
+        List<Class> bootStrap = [Role, ProductCategory, User, Store, Product, Order, ProductOrder]
 
         bootStrap.each {
             List<Map> data = parseJson("bootstrap/${it.simpleName}.json")
@@ -41,8 +41,14 @@ class BootStrapService {
         }
     }
 
-    void initUser(List<Map> data) {
+    void initProductCategory(List<Map> data) {
+        for (Map entry : data) {
+            ProductCategory productCategory = new ProductCategory(entry)
+            productCategory.save() ?: log.warn(productCategory.errors as String)
+        }
+    }
 
+    void initUser(List<Map> data) {
         data.each { Map entry ->
             initUser(entry)
         }
@@ -58,7 +64,6 @@ class BootStrapService {
         if (!user.id) {
             if (user.validate()) {
                 user.save()
-
                 (data.roles as List<String>).each {
                     Role role = Role.findByAuthority(it)
                     UserRole userRole = new UserRole(user: user, role: role)
@@ -72,10 +77,19 @@ class BootStrapService {
         return user
     }
 
+    void initStore(List<Map> data) {
+        for (Map entry : data) {
+            Store store = new Store(entry)
+            store.user = User.findById(entry.user)
+            store.save() ?: log.warn(store.errors as String)
+        }
+    }
+
     void initProduct(List<Map> data) {
         for (Map entry : data) {
             Product product = new Product(entry)
-            product.user = User.findById(entry.user)
+            product.store = Store.findById(entry.store)
+            product.productCategory = ProductCategory.findById(entry.category)
             product.createdTime = new LocalDateTime().toDate().getTime()
             product.save() ?: log.warn(product.errors as String)
         }

@@ -1,6 +1,4 @@
-package admin.productorder
-
-import com.jait.Product
+import com.jait.ProductOrder
 
 model {
     ProductOrder productOrder

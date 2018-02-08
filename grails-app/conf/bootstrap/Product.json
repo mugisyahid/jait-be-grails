@@ -3,7 +3,8 @@
     "name": "baju",
     "price": 10000,
     "description": "baju bagus",
-    "user": 1,
+    "store": 1,
+    "category": 1,
     "quantity": 10,
     "imageName": "product1.png"
   },
@@ -11,7 +12,8 @@
     "name": "celana",
     "price": 10000,
     "description": "celana bagus",
-    "user": 2,
+    "store": 1,
+    "category": 2,
     "quantity": 30,
     "imageName": "product2.png"
   },
@@ -19,7 +21,8 @@
     "name": "sarung",
     "price": 10000,
     "description": "sarung gajah ngapung",
-    "user": 3,
+    "store": 2,
+    "category": 3,
     "quantity": 30,
     "imageName": "product3.png"
   }

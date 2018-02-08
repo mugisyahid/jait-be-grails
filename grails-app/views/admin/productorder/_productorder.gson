@@ -3,7 +3,7 @@ import com.jait.ProductOrder
 inherits template: '/hal'
 
 model {
-    ProductOrder productorder
+    ProductOrder productOrder
 }
 
-json g.render(productorder)
+json g.render(productOrder)

@@ -1,0 +1,7 @@
+import com.jait.ProductCategory
+
+model {
+    ProductCategory productCategory
+}
+
+json tmpl.productCategory(productCategory: order)

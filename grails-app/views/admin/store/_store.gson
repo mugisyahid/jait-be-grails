@@ -1,0 +1,9 @@
+import com.jait.Store
+
+inherits template: '/hal'
+
+model {
+    Store store
+}
+
+json g.render(store)

@@ -13,5 +13,5 @@ class ProductCommand implements Validateable {
     double rating = 0
 
     //entity
-    Long userId;
+    Long storeId;
 }

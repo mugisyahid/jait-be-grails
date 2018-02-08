@@ -1,0 +1,9 @@
+import com.jait.ProductCategory
+
+inherits template: '/hal'
+
+model {
+    ProductCategory productCategory
+}
+
+json g.render(productCategory)

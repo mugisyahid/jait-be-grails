@@ -1,7 +1,8 @@
-package com.jait.api
+package com.jait.admin
 
 import com.jait.CommonController
 import com.jait.Product
+import com.jait.Store
 import com.jait.User
 import com.jait.command.api.ProductCommand
 import grails.compiler.GrailsCompileStatic
@@ -9,13 +10,10 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.joda.time.LocalDateTime
 
-/**
- * Created by zeldris on 25/12/17.
- */
 @GrailsCompileStatic
 class ProductController extends CommonController {
 
-    static namespace = 'api'
+    static namespace = 'admin'
 
     def index() {
         respond(products: Product.findAll())
@@ -36,7 +34,7 @@ class ProductController extends CommonController {
             return render(cmd.errors as JSON)
         }
         Product product = new Product(cmd)
-        product.user = User.findById(cmd.userId)
+        product.store = Store.findById(cmd.storeId)
         product.save()
         product.hasErrors() ? render(product.errors as JSON) : render(view: 'show', model: [product: product])
     }

@@ -4,7 +4,7 @@
 //grails.plugin.springsecurity.acl.authority.changeAclDetails = 'ROLE_SYSTEM'
 
 //rendering json
-grails.converters.json.default.deep = true
+//grails.converters.json.default.deep = true
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.jait.User'
