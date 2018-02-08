@@ -4,4 +4,4 @@ model {
     ProductCategory productCategory
 }
 
-json tmpl.productCategory(productCategory: order)
+json tmpl.productCategory(productCategory: productCategory)
