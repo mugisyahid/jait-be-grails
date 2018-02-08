@@ -37,6 +37,7 @@ class ProductController extends CommonController {
         }
         Product product = new Product(cmd)
         product.user = User.findById(cmd.userId)
+        product.save()
         product.hasErrors() ? render(product.errors as JSON) : render(view: 'show', model: [product: product])
     }
 }

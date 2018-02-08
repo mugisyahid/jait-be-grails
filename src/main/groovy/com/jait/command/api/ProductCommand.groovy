@@ -11,7 +11,6 @@ class ProductCommand implements Validateable {
     BigInteger quantity
     BigInteger viewCount = 0
     double rating = 0
-    Long createdTime;
 
     //entity
     Long userId;
