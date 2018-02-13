@@ -2,6 +2,7 @@ package com.jait.admin
 
 import com.jait.CommonController
 import com.jait.Store
+import com.jait.User
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.SpringSecurityService
 
@@ -26,6 +27,8 @@ class StoreController extends CommonController {
     }
 
     def save(Store store) {
+        def user = springSecurityService.currentUser
+        store.user = (User) user
         store.validate()
         store.save()
     }
