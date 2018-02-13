@@ -14,7 +14,7 @@ class Store {
     static hasMany = [products: Product]
 
     static constraints = {
-        bannerImage nullable: false, blank: false
-        products nullable: false, blank: false
+        bannerImage nullable: true, blank: true
+        products nullable: true, blank: true
     }
 }

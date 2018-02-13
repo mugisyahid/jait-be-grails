@@ -36,7 +36,7 @@ class BootStrapService {
             Role role = Role.findByAuthority(entry.authority) ?: new Role(entry)
 
             if (!role.id) {
-                role.save() ?: log.warn(role.errors as String)
+                role.save() ?: log.error(role.errors as String)
             }
         }
     }
@@ -44,7 +44,7 @@ class BootStrapService {
     void initProductCategory(List<Map> data) {
         for (Map entry : data) {
             ProductCategory productCategory = new ProductCategory(entry)
-            productCategory.save() ?: log.warn(productCategory.errors as String)
+            productCategory.save() ?: log.error(productCategory.errors as String)
         }
     }
 
@@ -67,10 +67,10 @@ class BootStrapService {
                 (data.roles as List<String>).each {
                     Role role = Role.findByAuthority(it)
                     UserRole userRole = new UserRole(user: user, role: role)
-                    userRole.save() ?: log.warn(userRole.errors as String)
+                    userRole.save() ?: log.error(userRole.errors as String)
                 }
             } else {
-                log.warn(user.errors as String)
+                log.error(user.errors as String)
             }
         }
 
@@ -81,7 +81,7 @@ class BootStrapService {
         for (Map entry : data) {
             Store store = new Store(entry)
             store.user = User.findById(entry.user)
-            store.save() ?: log.warn(store.errors as String)
+            store.save() ?: log.error(store.errors as String)
         }
     }
 
@@ -91,7 +91,7 @@ class BootStrapService {
             product.store = Store.findById(entry.store)
             product.productCategory = ProductCategory.findById(entry.category)
             product.createdTime = new LocalDateTime().toDate().getTime()
-            product.save() ?: log.warn(product.errors as String)
+            product.save() ?: log.error(product.errors as String)
         }
     }
 
@@ -99,7 +99,7 @@ class BootStrapService {
         for (Map entry : data) {
             Order order = new Order(entry)
             order.customer = User.findById(entry.user)
-            order.save() ?: log.warn(order.errors as String)
+            order.save() ?: log.error(order.errors as String)
         }
     }
 
@@ -108,7 +108,7 @@ class BootStrapService {
             ProductOrder productOrder = new ProductOrder(entry)
             productOrder.product = Product.findById(entry.product)
             productOrder.order = Order.findById(entry.order)
-            productOrder.save() ?: log.warn(productOrder.errors as String)
+            productOrder.save() ?: log.error(productOrder.errors as String)
         }
     }
 

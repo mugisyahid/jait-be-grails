@@ -12,7 +12,6 @@ class StoreController extends CommonController {
 
     SpringSecurityService springSecurityService
 
-
     def index() {
         def user = springSecurityService.currentUser
         respond(store: Store.findByUser(user)) // only one store per user
