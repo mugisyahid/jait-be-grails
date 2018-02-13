@@ -46,5 +46,21 @@
     "roles": [
       "ROLE_CUSTOMER"
     ]
+  },
+  {
+    "username": "userkosong@kopong.com",
+    "name": "user kosong",
+    "password": "abc",
+    "enabled": true,
+    "accountExpired": false,
+    "accountLocked": false,
+    "passwordExpired": false,
+    "remark": "user kosong teu punya nanaon",
+    "gender": "MALE",
+    "phone": "+666",
+    "imageName": "user3.png",
+    "roles": [
+      "ROLE_CUSTOMER"
+    ]
   }
 ]

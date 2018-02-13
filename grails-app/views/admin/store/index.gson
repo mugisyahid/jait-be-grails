@@ -1,7 +1,7 @@
 import com.jait.Store
 
 model{
-    List<Store> stores = []
+    Store store = []
 }
 
-json tmpl.store(stores ?: [])
+json tmpl.store(store ?: [])
