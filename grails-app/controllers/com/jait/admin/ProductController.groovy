@@ -12,6 +12,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.joda.time.LocalDateTime
 
 @GrailsCompileStatic
+@Secured('IS_AUTHENTICATED_FULLY')
 class ProductController extends CommonController {
 
     static namespace = 'admin'
@@ -28,8 +29,6 @@ class ProductController extends CommonController {
         respond(product: Product.findById(id))
     }
 
-    //any role
-    @Secured("(['ROLE_SYSTEM', 'ROLE_ADMIN', 'ROLE_CUSTOMER'])")
     def save(ProductCommand cmd) {
         if (!cmd.validate()) {
             return render(cmd.errors as JSON)

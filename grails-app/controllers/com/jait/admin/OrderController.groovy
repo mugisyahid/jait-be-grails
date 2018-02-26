@@ -3,8 +3,10 @@ package com.jait.admin
 import com.jait.CommonController
 import com.jait.Order
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
+@Secured('IS_AUTHENTICATED_FULLY')
 class OrderController extends CommonController {
 
     static namespace = 'admin'
