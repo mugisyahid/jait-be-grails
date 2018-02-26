@@ -3,13 +3,14 @@ package com.jait.admin
 import com.jait.CommonController
 import com.jait.User
 import com.jait.command.admin.RegisterCommand
+import com.jait.service.admin.EmailService
 import com.jait.service.admin.UserService
 import com.jait.service.file.ImageService
+import com.sendgrid.Content
 import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
-import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject
 import org.springframework.http.HttpMethod
 import sun.misc.BASE64Decoder
@@ -22,39 +23,47 @@ class UserController extends CommonController {
     static namespace = 'admin'
 
     static allowedMethods = [register  : HttpMethod.POST.name(), profile: HttpMethod.POST.name(),
-                             enableUser: HttpMethod.PUT.name(), updateImage: HttpMethod.POST.name()]
+                             enableUser: HttpMethod.PUT.name(), updateImage: HttpMethod.POST.name(),
+                             activate  : HttpMethod.POST.name()]
 
     UserService userService
     ImageService imageService
+    EmailService emailService
     SpringSecurityService springSecurityService
 
-    @Secured('IS_AUTHENTICATED_ANONYMOUSLY')
     def register(RegisterCommand cmd) {
         if (!cmd.validate()) {
             return render(cmd.errors as JSON)
         }
         User user = userService.register(cmd)
         userService.setRole(user, cmd.roles)
+        //send mail
+        Content content = new Content("text/plain", "Click the link below\n" + grailsApplication.config.getProperty('clientDomain') + user.activationToken)
+        emailService.sendMail(user.username, " Hi ${user.name},Please activate your accout !", content)
         user.hasErrors() ? render(user.errors as JSON) : render(view: 'show', model: [user: user])
     }
 
-    @Secured(['ROLE_SYSTEM', 'ROLE_ADMIN'])
+    @Transactional
+    def activate(String token) {
+        User user = User.findByActivationToken(token)
+        user.enabled = true
+        user.save()
+        render(view: 'show', model: [user: user])
+    }
+
     def index() {
         def id = springSecurityService.getCurrentUserId()
         respond(users: User.findAll("from User as U where U.id not in (?) ", [id]))
     }
 
-    @Secured('IS_AUTHENTICATED_FULLY')
     def show(long id) {
         respond(user: User.findById(id))
     }
 
-    @Secured('IS_AUTHENTICATED_FULLY')
     def profile(User cmd) {
         render(view: 'show', model: [user: User.findByUsername(cmd.username)])
     }
 
-    @Secured('IS_AUTHENTICATED_FULLY')
     def update(User user) {
         if (user == null) {
             render status: NOT_FOUND
@@ -68,7 +77,6 @@ class UserController extends CommonController {
         save(user)
     }
 
-    @Secured('IS_AUTHENTICATED_FULLY')
     @Transactional
     def save(User user) {
         user.validate()
@@ -76,7 +84,6 @@ class UserController extends CommonController {
         render(view: 'show', model: [user: user])
     }
 
-    @Secured('IS_AUTHENTICATED_FULLY')
     @Transactional
     def enableUser() {
         def json = request.getJSON() as JSONObject
@@ -86,7 +93,6 @@ class UserController extends CommonController {
         render(view: 'show', model: [user: user])
     }
 
-    @Secured('IS_AUTHENTICATED_FULLY')
     @Transactional
     def updateImage() {
         def json = request.getJSON() as JSONObject

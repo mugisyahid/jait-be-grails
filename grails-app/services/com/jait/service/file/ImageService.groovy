@@ -4,9 +4,12 @@ import com.cloudinary.Cloudinary
 import grails.config.Config
 import grails.core.support.GrailsConfigurationAware
 
+/**
+ * cloudinary implementation
+ */
 class ImageService implements GrailsConfigurationAware {
 
-    Cloudinary cloudinary
+    private Cloudinary cloudinary
 
     @Override
     void setConfiguration(Config co) {

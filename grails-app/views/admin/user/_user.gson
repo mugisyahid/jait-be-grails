@@ -6,4 +6,4 @@ model {
     User user
 }
 
-json g.render(user, [excludes: ['password', 'products']])
+json g.render(user, [excludes: ['password', 'products', 'activationToken']])

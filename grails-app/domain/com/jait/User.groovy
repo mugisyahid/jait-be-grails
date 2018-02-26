@@ -17,7 +17,7 @@ class User implements Serializable {
     String password
     String name
     String remark
-    boolean enabled = true
+    boolean enabled = false
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
@@ -27,6 +27,8 @@ class User implements Serializable {
     String about
     Long registered
     List<String> image //public_id and url
+
+    String activationToken
 
     //entity
     Gender gender
@@ -46,6 +48,7 @@ class User implements Serializable {
         about nullable: true, blank: true
         image nullable: true, blank: true
         gender nullable: true, blank: true
+        activationToken nullable: true, blank: true
         store nullable: true, blank: true, unique: true
     }
 

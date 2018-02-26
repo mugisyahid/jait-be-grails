@@ -5,10 +5,8 @@ import com.jait.Store
 import com.jait.User
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.SpringSecurityService
-import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
-@Secured('IS_AUTHENTICATED_FULLY')
 class StoreController extends CommonController {
 
     static namespace = 'admin'

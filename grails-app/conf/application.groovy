@@ -24,50 +24,47 @@ grails.plugin.springsecurity.rest.token.storage.jwt.useSignedJwt = true
 grails.plugin.springsecurity.rest.logout.endpointUrl = '/api/logout'
 //grails.plugin.springsecurity.rest.token.validation.headerName = ''
 
-final String anonymousFilter = 'anonymousAuthenticationFilter,restTokenValidationFilter,' +
-        'restExceptionTranslationFilter,filterInvocationInterceptor'
+final String anonymousFilter = 'anonymousAuthenticationFilter, restTokenValidationFilter, restExceptionTranslationFilter, filterInvocationInterceptor'
 
-final String traditionalFilter = 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'
+final String traditionalFilter = 'JOINED_FILTERS, -restTokenValidationFilter, -restExceptionTranslationFilter'
 
-final String statelessFilter = 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
-
-
-//grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
-//grails.plugin.springsecurity.interceptUrlMap = [
-//        [pattern: '/', access: ['permitAll']],
-//        [pattern: '/error', access: ['permitAll']],
-//        [pattern: '/index', access: ['permitAll']],
-//        [pattern: '/index.gsp', access: ['permitAll']],
-//        [pattern: '/shutdown', access: ['permitAll']],
-//        [pattern: '/assets/**', access: ['permitAll']],
-//        [pattern: '/**/js/**', access: ['permitAll']],
-//        [pattern: '/**/css/**', access: ['permitAll']],
-//        [pattern: '/**/images/**', access: ['permitAll']],
-//        [pattern: '/**/favicon.ico', access: ['permitAll']],
-//        //auth api
-//        [pattern: '/login/**', access: ['permitAll']],
-//        [pattern: '/api/login', access: ['ROLE_ANONYMOUS']],
-//        [pattern: '/logout/**', access: ['isFullyAuthenticated()']],
-//        [pattern: '/api/logout', access: ['isFullyAuthenticated()']],
-//        [pattern: '/oauth/access_token', access: ['permitAll']],
-//        [pattern: '/register', access: ['permitAll']],
-//        //secure api
-//        [pattern: '/admin/**', access: ['isFullyAuthenticated()']],
-//        //public api
-//        [pattern: '/api/**', access: ['permitAll']],
-//]
+final String statelessFilter = 'JOINED_FILTERS, -anonymousAuthenticationFilter, -exceptionTranslationFilter, -authenticationProcessingFilter, -securityContextPersistenceFilter, -rememberMeAuthenticationFilter'
 
 
-grails.plugin.springsecurity.filterChain.chainMap = [
-        [pattern: '/assets/**', filters: anonymousFilter],
-        [pattern: '/**/js/**', filters: anonymousFilter],
-        [pattern: '/**/css/**', filters: anonymousFilter],
-        [pattern: '/**/images/**', filters: anonymousFilter],
-        [pattern: '/**/favicon.ico', filters: anonymousFilter],
-
-        //api
-        [pattern: '/admin/**', filters: statelessFilter],
-
-        [pattern: '/**', filters: traditionalFilter]
+grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
+grails.plugin.springsecurity.interceptUrlMap = [
+        [pattern: '/', access: ['permitAll']],
+        [pattern: '/error', access: ['permitAll']],
+        [pattern: '/index', access: ['permitAll']],
+        [pattern: '/index.gsp', access: ['permitAll']],
+        [pattern: '/shutdown', access: ['permitAll']],
+        [pattern: '/assets/**', access: ['permitAll']],
+        [pattern: '/**/js/**', access: ['permitAll']],
+        [pattern: '/**/css/**', access: ['permitAll']],
+        [pattern: '/**/images/**', access: ['permitAll']],
+        [pattern: '/**/favicon.ico', access: ['permitAll']],
+        //auth api
+        [pattern: '/login/**', access: ['permitAll']],
+        [pattern: '/api/login', access: ['ROLE_ANONYMOUS']],
+        [pattern: '/logout/**', access: ['isFullyAuthenticated()']],
+        [pattern: '/api/logout', access: ['isFullyAuthenticated()']],
+        [pattern: '/oauth/access_token', access: ['permitAll']],
+        [pattern: '/register', access: ['permitAll']],
+        //secure api
+        [pattern: '/admin/user', access: ['ROLE_SYSTEM']],
+        //public api
+        [pattern: '/api/**', access: ['permitAll']],
 ]
 
+//grails.plugin.springsecurity.filterChain.chainMap = [
+//        [pattern: '/assets/**', filters: anonymousFilter],
+//        [pattern: '/**/js/**', filters: anonymousFilter],
+//        [pattern: '/**/css/**', filters: anonymousFilter],
+//        [pattern: '/**/images/**', filters: anonymousFilter],
+//        [pattern: '/**/favicon.ico', filters: anonymousFilter],
+//
+//        //api
+//        [pattern: '/admin/**', filters: statelessFilter],
+//
+//        [pattern: '/**', filters: traditionalFilter]
+//]

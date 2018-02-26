@@ -14,9 +14,12 @@ import org.joda.time.LocalDateTime
 @GrailsCompileStatic
 class UserService {
 
+    KeyGeneratorService keyGeneratorService
+
     User register(RegisterCommand cmd) {
         User user = new User(name: cmd.name, username: cmd.username, password: cmd.password, remark: cmd.remark)
         user.status = Status.ACTIVE
+        user.activationToken = keyGeneratorService.randomAlphaNumeric.nextRandom(12)
         user.registered = new LocalDateTime().toDate().getTime()
         user.save() ?: user
     }

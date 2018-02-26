@@ -4,15 +4,11 @@ import com.jait.CommonController
 import com.jait.Product
 import com.jait.ProductCategory
 import com.jait.Store
-import com.jait.User
 import com.jait.command.api.ProductCommand
 import grails.compiler.GrailsCompileStatic
 import grails.converters.JSON
-import grails.plugin.springsecurity.annotation.Secured
-import org.joda.time.LocalDateTime
 
 @GrailsCompileStatic
-@Secured('IS_AUTHENTICATED_FULLY')
 class ProductController extends CommonController {
 
     static namespace = 'admin'

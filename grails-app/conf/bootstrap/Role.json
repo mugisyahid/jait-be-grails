@@ -10,5 +10,9 @@
   {
     "authority": "ROLE_CUSTOMER",
     "description": "Customer Role, can order and create konveksi"
+  },
+  {
+    "authority": "ROLE_ANONYMOUS",
+    "description": "anonim user"
   }
 ]
