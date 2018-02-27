@@ -44,16 +44,28 @@ grails.plugin.springsecurity.interceptUrlMap = [
         [pattern: '/**/images/**', access: ['permitAll']],
         [pattern: '/**/favicon.ico', access: ['permitAll']],
         //auth api
-        [pattern: '/login/**', access: ['permitAll']],
         [pattern: '/api/login', access: ['ROLE_ANONYMOUS']],
-        [pattern: '/logout/**', access: ['isFullyAuthenticated()']],
-        [pattern: '/api/logout', access: ['isFullyAuthenticated()']],
+        [pattern: '/api/logout', access: ['IS_AUTHENTICATED_FULLY']],
+        [pattern: '/login/**', access: ['permitAll']],
+        [pattern: '/logout/**', access: ['IS_AUTHENTICATED_FULLY']],
         [pattern: '/oauth/access_token', access: ['permitAll']],
         [pattern: '/register', access: ['permitAll']],
         //secure api
-        [pattern: '/admin/user', access: ['ROLE_SYSTEM']],
+        [pattern: '/admin/user', access: ['ROLE_SYSTEM', 'ROLE_ADMIN']],
+        [pattern: '/admin/user/**', access: ['IS_AUTHENTICATED_FULLY']],
+
+        [pattern: '/admin/store/**', access: ['IS_AUTHENTICATED_FULLY']],
+        [pattern: '/admin/promo/**', access: ['IS_AUTHENTICATED_FULLY']],
+        [pattern: '/admin/product/**', access: ['IS_AUTHENTICATED_FULLY']],
+        [pattern: '/admin/productOrder/**', access: ['IS_AUTHENTICATED_FULLY']],
+        [pattern: '/admin/order/**', access: ['IS_AUTHENTICATED_FULLY']],
+
+        [pattern: '/admin/**', access: ['IS_AUTHENTICATED_FULLY']],
         //public api
+        [pattern: '/activate', access: ['permitAll']],
         [pattern: '/api/**', access: ['permitAll']],
+
+        [pattern: '/**', access: ['IS_AUTHENTICATED_FULLY']]
 ]
 
 //grails.plugin.springsecurity.filterChain.chainMap = [

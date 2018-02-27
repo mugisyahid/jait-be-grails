@@ -39,13 +39,14 @@ class UserController extends CommonController {
         userService.setRole(user, cmd.roles)
         //send mail
         Content content = new Content("text/plain", "Click the link below\n" + grailsApplication.config.getProperty('clientDomain') + user.activationToken)
-        emailService.sendMail(user.username, " Hi ${user.name},Please activate your accout !", content)
+        emailService.sendMail(user.username, " Hi ${user.name}, Please activate your account!", content)
         user.hasErrors() ? render(user.errors as JSON) : render(view: 'show', model: [user: user])
     }
 
     @Transactional
-    def activate(String token) {
-        User user = User.findByActivationToken(token)
+    def activate() {
+        def json = request.getJSON() as JSONObject
+        User user = User.findByActivationToken(json.get('token'))
         user.enabled = true
         user.save()
         render(view: 'show', model: [user: user])

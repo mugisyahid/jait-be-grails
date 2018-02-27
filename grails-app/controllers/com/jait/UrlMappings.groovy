@@ -18,6 +18,7 @@ class UrlMappings {
         "404"(view: '/notFound')
 
         '/register'(controller: 'user', action: 'register', method: "POST")
+        '/activate'(controller: 'user', action: 'activate', method: "POST")
 
         group('/admin') {
             '/role'(resources: 'role', namespace: 'admin', includes: [ACTION_INDEX])
@@ -34,8 +35,8 @@ class UrlMappings {
             '/product'(resources: 'product', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE, ACTION_CREATE])
 
             '/order'(resources: 'order', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE, ACTION_SAVE])
-            '/productOrder'(resources: 'productOrder', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE])
 
+            '/productOrder'(resources: 'productOrder', namespace: 'admin', includes: [ACTION_INDEX, ACTION_SHOW, ACTION_UPDATE])
         }
 
         group('/api') {
