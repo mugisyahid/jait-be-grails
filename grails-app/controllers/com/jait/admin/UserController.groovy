@@ -47,9 +47,17 @@ class UserController extends CommonController {
     def activate() {
         def json = request.getJSON() as JSONObject
         User user = User.findByActivationToken(json.get('token'))
-        user.enabled = true
-        user.save()
-        render(view: 'show', model: [user: user])
+        if (user) {
+            if (!user.enabled) {
+                user.enabled = true
+                user.save()
+                render(view: 'show', model: [user: user])
+            } else {
+                respond(user: [])
+            }
+        } else {
+            respond(error: 'Oppss! Wrong Activation Key!')
+        }
     }
 
     def index() {
