@@ -118,7 +118,7 @@ environments:
             dbCreate: create-drop
             url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
         emailFrom: 'noreply-ganteng@tukangjait.com'
-        clientDomain: 'localhost:4300/activation/'
+        clientDomain: 'localhost:4101/activation/'
     test:
         dataSource:
             dbCreate: update
@@ -128,7 +128,7 @@ environments:
           active: true          # enable/disable springsecurity
           debug.useFilter: true  #logging filter
         emailFrom: 'noreply-ganteng@tukangjait.com'
-        clientDomain: 'https://tukang-jait.herokuapp.com/activation/'
+        clientDomain: 'https://sandang2.herokuapp.com/activation/'
         dataSource:
             dbCreate: update
             url: jdbc:h2:mem:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
